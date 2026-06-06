@@ -17,4 +17,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip3 install PyYAML
-      - run: python3 .github/workflows/chk_adrs.py Standards
+      - run: python3 .github/workflows/chk_adrs.py ./
