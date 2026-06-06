@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - .nvmrc
-      - package-lock.json
+      - .github/workflows/.nvmrc
+      - .github/workflows/package-lock.json
       - .github/workflows/pr-markdownlint.yml
       - "**/*.md"
 
@@ -20,12 +20,14 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: ".github/workflows/.nvmrc"
           cache: npm
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: ".github/workflows/package-lock.json"
 
       - name: Install all npm packages
         run: npm ci
+        working-directory: ".github/workflows"
 
       - name: Lint markdown files
         run: npm run lint:md
+        working-directory: ".github/workflows"
