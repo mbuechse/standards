@@ -6,29 +6,15 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/.nvmrc
-      - .github/workflows/package-lock.json
       - .github/workflows/pr-markdownlint.yml
       - "**/*.md"
 
 jobs:
   lint-docs:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v23
         with:
-          node-version-file: ".github/workflows/.nvmrc"
-          cache: npm
-          cache-dependency-path: ".github/workflows/package-lock.json"
-
-      - name: Install all npm packages
-        run: npm ci
-        working-directory: ".github/workflows"
-
-      - name: Lint markdown files
-        run: npm run lint:md
-        working-directory: ".github/workflows"
+          globs: '**/*.md'
+          config: '.github/workflows/markdownlint-cli2.jsonc'
