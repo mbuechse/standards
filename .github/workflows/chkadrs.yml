@@ -1,0 +1,20 @@
+---
+name: Syntax-check Architectural Decision Records
+
+"on":
+  workflow_dispatch:
+  push:
+    paths:
+      - '**.md'
+      - .github/workflows/chkadrs.yml
+
+jobs:
+  run-chk-adrs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip3 install PyYAML
+      - run: python3 Tests/chk_adrs.py Standards
