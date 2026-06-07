@@ -108,7 +108,7 @@ class Checker:
         # NOTE could check that each entry refers to a file that exists
         for fn2 in supplements:
             if fn2 not in filenames:
-                self.emit("in {fn}: field 'supplements' refers to unknown {fn2}")
+                self.emit(f"in {fn}: field 'supplements' refers to unknown {fn2}")
 
     def check_front_matter(self, fn, front, filenames):
         """Check the dict `front` of front matter

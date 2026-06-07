@@ -3,7 +3,7 @@ title: "SCS-compatible KaaS: Testing Notes"
 type: Supplement
 track: Scopes
 supplements:
-  - scs-0502-v5-scs-compatible-kaas.md
+  - scs-0502-v1-scs-compatible-kaas.md
 ---
 
 ## Testing notes
